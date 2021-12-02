@@ -42,6 +42,8 @@ dependencies:
   path: ^1.8.0
   sqlite_viewer: ^1.0.5
   auto_size_text: ^3.0.0
+  path_provider: ^2.0.7
+  flutter_image_compress: ^1.1.0
 
 dev_dependencies:
   flutter_test:

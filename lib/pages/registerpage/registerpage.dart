@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:dynamic_flutter/controllers/jsoncontroller.dart';
 import 'package:dynamic_flutter/controllers/registerpagecontroller.dart';
 import 'package:dynamic_flutter/data/model/userinfo.dart';
+import 'package:dynamic_flutter/utils/image_compressor.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:image_picker/image_picker.dart';
@@ -191,7 +192,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 source: ImageSource.camera);
                                         if (photo != null) {
                                           var image = await photo.readAsBytes();
-                                          images.assignAll([image]);
+                                          var compressedimage =
+                                              await getCompressedImage(image);
+                                          images.assignAll([compressedimage]);
                                         }
                                       },
                                       child: const Text(
@@ -208,7 +211,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 source: ImageSource.gallery);
                                         if (photo != null) {
                                           var image = await photo.readAsBytes();
-                                          images.assignAll([image]);
+                                          var compressedimage =
+                                              await getCompressedImage(image);
+                                          images.assignAll([compressedimage]);
                                         }
                                       },
                                       child: const Text(

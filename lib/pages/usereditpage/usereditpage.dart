@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:dynamic_flutter/controllers/jsoncontroller.dart';
 import 'package:dynamic_flutter/controllers/usercontrollers.dart';
 import 'package:dynamic_flutter/data/model/userinfo.dart';
+import 'package:dynamic_flutter/utils/image_compressor.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:get/get.dart';
@@ -192,7 +193,11 @@ class _UserEditPageState extends State<UserEditPage> {
                                             if (photo != null) {
                                               var image =
                                                   await photo.readAsBytes();
-                                              images.assignAll([image]);
+                                              var compressedimage =
+                                                  await getCompressedImage(
+                                                      image);
+                                              images
+                                                  .assignAll([compressedimage]);
                                             }
                                           },
                                           child: const Text(
@@ -211,7 +216,11 @@ class _UserEditPageState extends State<UserEditPage> {
                                             if (photo != null) {
                                               var image =
                                                   await photo.readAsBytes();
-                                              images.assignAll([image]);
+                                              var compressedimage =
+                                                  await getCompressedImage(
+                                                      image);
+                                              images
+                                                  .assignAll([compressedimage]);
                                             }
                                           },
                                           child: const Text(
