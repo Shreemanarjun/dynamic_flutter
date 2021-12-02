@@ -188,7 +188,7 @@ class _UserEditPageState extends State<UserEditPage> {
                                               final XFile? photo =
                                                   await _picker.pickImage(
                                                       source:
-                                                          ImageSource.gallery);
+                                                          ImageSource.camera);
                                               if (photo != null) {
                                                 var image =
                                                     await photo.readAsBytes();

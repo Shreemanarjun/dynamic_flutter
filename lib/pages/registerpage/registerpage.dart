@@ -187,7 +187,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         try {
                                           final XFile? photo =
                                               await _picker.pickImage(
-                                                  source: ImageSource.gallery);
+                                                  source: ImageSource.camera);
                                           if (photo != null) {
                                             var image =
                                                 await photo.readAsBytes();
