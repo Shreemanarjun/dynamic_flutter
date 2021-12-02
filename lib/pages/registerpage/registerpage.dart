@@ -35,7 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formkey = GlobalKey<FormState>();
   final JsonController jsonController = Get.find();
   final RegisterPageController registerPageController = Get.find();
-
+  final ImagePicker _picker = ImagePicker();
   initializeTextField() {
     namecontroller.text = jsonController.json!.form!.inputs[0].Values ?? "";
     datecontroller.text = jsonController.json!.form!.inputs[1].Values ?? "";
@@ -184,8 +184,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: ElevatedButton(
                                       onPressed: () async {
-                                        final ImagePicker _picker =
-                                            ImagePicker();
                                         final XFile? photo =
                                             await _picker.pickImage(
                                                 source: ImageSource.camera);
@@ -201,8 +199,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: ElevatedButton(
                                       onPressed: () async {
-                                        final ImagePicker _picker =
-                                            ImagePicker();
                                         final XFile? photo =
                                             await _picker.pickImage(
                                                 source: ImageSource.gallery);
