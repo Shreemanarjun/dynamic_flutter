@@ -35,7 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formkey = GlobalKey<FormState>();
   final JsonController jsonController = Get.find();
   final RegisterPageController registerPageController = Get.find();
-  final ImagePicker _picker = ImagePicker();
+
   initializeTextField() {
     namecontroller.text = jsonController.json!.form!.inputs[0].Values ?? "";
     datecontroller.text = jsonController.json!.form!.inputs[1].Values ?? "";
@@ -184,18 +184,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: ElevatedButton(
                                       onPressed: () async {
-                                        try {
-                                          final XFile? photo =
-                                              await _picker.pickImage(
-                                                  source: ImageSource.camera);
-                                          if (photo != null) {
-                                            var image =
-                                                await photo.readAsBytes();
-                                            images.assignAll([image]);
-                                          }
-                                        } catch (e) {
-                                          Get.snackbar('error imagepicker',
-                                              e.toString());
+                                        final ImagePicker _picker =
+                                            ImagePicker();
+                                        final XFile? photo =
+                                            await _picker.pickImage(
+                                                source: ImageSource.camera);
+                                        if (photo != null) {
+                                          var image = await photo.readAsBytes();
+                                          images.assignAll([image]);
                                         }
                                       },
                                       child: const Text(
@@ -205,18 +201,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: ElevatedButton(
                                       onPressed: () async {
-                                        try {
-                                          final XFile? photo =
-                                              await _picker.pickImage(
-                                                  source: ImageSource.gallery);
-                                          if (photo != null) {
-                                            var image =
-                                                await photo.readAsBytes();
-                                            images.assignAll([image]);
-                                          }
-                                        } catch (e) {
-                                          Get.snackbar('error imagepicker',
-                                              e.toString());
+                                        final ImagePicker _picker =
+                                            ImagePicker();
+                                        final XFile? photo =
+                                            await _picker.pickImage(
+                                                source: ImageSource.gallery);
+                                        if (photo != null) {
+                                          var image = await photo.readAsBytes();
+                                          images.assignAll([image]);
                                         }
                                       },
                                       child: const Text(

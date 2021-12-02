@@ -40,7 +40,7 @@ class _UserEditPageState extends State<UserEditPage> {
   final UsersController usersController = Get.find();
 
   final JsonController jsonController = Get.find();
-  final ImagePicker _picker = ImagePicker();
+
   initializeTextField() {
     namecontroller.text = widget.user.name;
     datecontroller.text = widget.user.dob;
@@ -184,19 +184,15 @@ class _UserEditPageState extends State<UserEditPage> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: ElevatedButton(
                                           onPressed: () async {
-                                            try {
-                                              final XFile? photo =
-                                                  await _picker.pickImage(
-                                                      source:
-                                                          ImageSource.camera);
-                                              if (photo != null) {
-                                                var image =
-                                                    await photo.readAsBytes();
-                                                images.assignAll([image]);
-                                              }
-                                            } catch (e) {
-                                              Get.snackbar('error imagepicker',
-                                                  e.toString());
+                                            final ImagePicker _picker =
+                                                ImagePicker();
+                                            final XFile? photo =
+                                                await _picker.pickImage(
+                                                    source: ImageSource.camera);
+                                            if (photo != null) {
+                                              var image =
+                                                  await photo.readAsBytes();
+                                              images.assignAll([image]);
                                             }
                                           },
                                           child: const Text(
@@ -206,19 +202,16 @@ class _UserEditPageState extends State<UserEditPage> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: ElevatedButton(
                                           onPressed: () async {
-                                            try {
-                                              final XFile? photo =
-                                                  await _picker.pickImage(
-                                                      source:
-                                                          ImageSource.gallery);
-                                              if (photo != null) {
-                                                var image =
-                                                    await photo.readAsBytes();
-                                                images.assignAll([image]);
-                                              }
-                                            } catch (e) {
-                                              Get.snackbar('error imagepicker',
-                                                  e.toString());
+                                            final ImagePicker _picker =
+                                                ImagePicker();
+                                            final XFile? photo =
+                                                await _picker.pickImage(
+                                                    source:
+                                                        ImageSource.gallery);
+                                            if (photo != null) {
+                                              var image =
+                                                  await photo.readAsBytes();
+                                              images.assignAll([image]);
                                             }
                                           },
                                           child: const Text(
